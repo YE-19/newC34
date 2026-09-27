@@ -190,23 +190,10 @@ export const RomanticJourney = ({ onComplete }) => {
     }
   };
 
-  // ── Step 7: Ending Confetti Burst ──
+  // ── Step 7: Ending Confetti Burst (Single celebratory burst) ──
   useEffect(() => {
     if (currentStep === 7) {
-      triggerConfetti(200);
-      const interval = setInterval(() => {
-        confetti({
-          particleCount: 50,
-          spread: 60,
-          origin: {
-            x: Math.random() * 0.6 + 0.2,
-            y: Math.random() * 0.4 + 0.3,
-          },
-          colors: ['#f59e0b', '#f97316', '#fb7185', '#fbbf24', '#fef3c7', '#d97706'],
-        });
-      }, 1500);
-
-      return () => clearInterval(interval);
+      triggerConfetti(150);
     }
   }, [currentStep, triggerConfetti]);
 
@@ -224,61 +211,60 @@ export const RomanticJourney = ({ onComplete }) => {
   };
 
   return (
-    <div className="fixed inset-0 h-[100dvh] w-full flex flex-col items-center justify-center bg-[#FAF6F0] overflow-hidden select-none font-sans text-stone-800">
+    <div
+      className="fixed inset-0 h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden select-none font-sans text-stone-800"
+      style={{
+        background:
+          'radial-gradient(circle at 12% 12%, rgba(253, 230, 138, 0.45) 0%, transparent 45%), radial-gradient(circle at 88% 88%, rgba(254, 215, 170, 0.45) 0%, transparent 45%), radial-gradient(circle at 85% 15%, rgba(254, 205, 211, 0.35) 0%, transparent 40%), radial-gradient(circle at 50% 50%, rgba(254, 243, 199, 0.35) 0%, transparent 55%), #FAF6F0',
+      }}
+    >
 
-      {/* ── Warm Ambient Glow Orbs ── */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-15%] left-[-10%] w-80 md:w-[450px] h-80 md:h-[450px] bg-amber-300/35 rounded-full blur-[100px] md:blur-[160px]" />
-        <div className="absolute bottom-[-15%] right-[-10%] w-80 md:w-[450px] h-80 md:h-[450px] bg-orange-300/35 rounded-full blur-[100px] md:blur-[160px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-rose-200/30 rounded-full blur-[110px] md:blur-[180px]" />
-      </div>
-
-      {/* ── Decorative Warm Background Grid Pattern ── */}
+      {/* ── Soft Romantic Dotted Stardust Pattern ── */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.04]"
+        className="absolute inset-0 pointer-events-none opacity-[0.22]"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(120,53,15,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(120,53,15,0.7) 1px, transparent 1px)',
-          backgroundSize: '50px 50px',
+            'radial-gradient(circle at 1.5px 1.5px, rgba(180, 83, 9, 0.35) 1.5px, transparent 0)',
+          backgroundSize: '28px 28px',
         }}
       />
 
       {/* ── Top & Bottom Glowing Sunset Edge Bars ── */}
-      <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 z-30" />
-      <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400 z-30" />
+      <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 z-30 shadow-[0_2px_10px_rgba(249,115,22,0.3)]" />
+      <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400 z-30 shadow-[0_-2px_10px_rgba(249,115,22,0.3)]" />
 
-      {/* ── Corner Ornaments ── */}
-      <div className="absolute top-4 left-4 md:top-6 md:left-6 w-8 h-8 md:w-10 md:h-10 border-t-2 border-l-2 border-amber-600/35 rounded-tl-sm pointer-events-none z-20" />
-      <div className="absolute top-4 right-4 md:top-6 md:right-6 w-8 h-8 md:w-10 md:h-10 border-t-2 border-r-2 border-amber-600/35 rounded-tr-sm pointer-events-none z-20" />
-      <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 w-8 h-8 md:w-10 md:h-10 border-b-2 border-l-2 border-amber-600/35 rounded-bl-sm pointer-events-none z-20" />
-      <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 w-8 h-8 md:w-10 md:h-10 border-b-2 border-r-2 border-amber-600/35 rounded-br-sm pointer-events-none z-20" />
+      {/* ── Elegant Corner Accents ── */}
+      <div className="absolute top-4 left-4 md:top-6 md:left-6 w-8 h-8 md:w-10 md:h-10 border-t-2 border-l-2 border-amber-500/40 rounded-tl-lg pointer-events-none z-20" />
+      <div className="absolute top-4 right-4 md:top-6 md:right-6 w-8 h-8 md:w-10 md:h-10 border-t-2 border-r-2 border-amber-500/40 rounded-tr-lg pointer-events-none z-20" />
+      <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 w-8 h-8 md:w-10 md:h-10 border-b-2 border-l-2 border-amber-500/40 rounded-bl-lg pointer-events-none z-20" />
+      <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 w-8 h-8 md:w-10 md:h-10 border-b-2 border-r-2 border-amber-500/40 rounded-br-lg pointer-events-none z-20" />
 
-      {/* ── Floating Warm Sparkle Dust Particles ── */}
-      <div className="absolute inset-0 pointer-events-none z-10">
-        {[...Array(14)].map((_, i) => (
+      {/* ── Ultra-Lightweight GPU Floating Romantic Hearts & Sparkles ── */}
+      <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+        {[
+          { left: '10%', delay: 0, duration: 8, emoji: '💖', size: 'text-sm' },
+          { left: '25%', delay: 2.5, duration: 9, emoji: '✨', size: 'text-xs' },
+          { left: '75%', delay: 1.2, duration: 8.5, emoji: '💕', size: 'text-sm' },
+          { left: '90%', delay: 3.5, duration: 9.5, emoji: '✨', size: 'text-xs' },
+        ].map((item, i) => (
           <motion.div
-            key={`particle-${i}`}
-            initial={{ opacity: 0, y: 0 }}
+            key={`floating-heart-${i}`}
+            initial={{ y: '105vh', opacity: 0 }}
             animate={{
-              opacity: [0, 0.7, 0],
-              y: [0, -(30 + Math.random() * 50)],
-              x: [(Math.random() - 0.5) * 20],
+              y: '-10vh',
+              opacity: [0, 0.7, 0.7, 0],
             }}
             transition={{
-              duration: 4 + Math.random() * 3,
+              duration: item.duration,
               repeat: Infinity,
-              delay: Math.random() * 5,
-              ease: 'easeOut',
+              delay: item.delay,
+              ease: 'linear',
             }}
-            className="absolute rounded-full will-change-transform"
-            style={{
-              top: `${15 + Math.random() * 70}%`,
-              left: `${5 + Math.random() * 90}%`,
-              width: `${2 + Math.random() * 3}px`,
-              height: `${2 + Math.random() * 3}px`,
-              background: i % 3 === 0 ? '#f59e0b' : i % 3 === 1 ? '#fb923c' : '#f472b6',
-            }}
-          />
+            className={`absolute ${item.size} select-none will-change-transform`}
+            style={{ left: item.left }}
+          >
+            {item.emoji}
+          </motion.div>
         ))}
       </div>
 
